@@ -1,0 +1,53 @@
+﻿@model HomeViewModel
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+
+    @if (Model != null && Model.ErrorViewModel != null)
+    {
+        <div class="row">
+            <div class="col-12">
+                <div class="alert-info float-left">
+                    @Model.ErrorViewModel.Message
+                </div>
+            </div>
+        </div>
+    }
+
+</div>
+<div>
+    <fieldset class="fieldset fieldset-rounded-border">
+        <legend class="legend"> Email Services</legend>
+        <form asp-action="AddNewTask">
+            <div class="row">
+                <div class="col-md-6"> 
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="form-group">
+                        <label for="@Model.EmailServiceModel.ServiceName" class="control-label font-weight-bold">Service Name</label>
+                        <input asp-for="@Model.EmailServiceModel.ServiceName" class="form-control" type="text" />
+                        <span asp-validation-for="@Model.EmailServiceModel.ServiceName" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label for="@Model.EmailServiceModel.ConnectionString" class="control-label font-weight-bold">Connection String</label>
+                        <input asp-for="@Model.EmailServiceModel.ConnectionString" class="form-control" type="text" />
+                        <span asp-validation-for="@Model.EmailServiceModel.ConnectionString" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+
+                        <label for="@Model.EmailServiceModel.TimeInterval" class="control-label font-weight-bold">Time Interval(In Minutes)</label>
+                        <input asp-for="@Model.EmailServiceModel.TimeInterval" class="form-control" type="number" />
+                        <span asp-validation-for="@Model.EmailServiceModel.TimeInterval" class="text-danger"></span>
+                    </div> 
+                </div>
+            </div>
+            <div class="row">
+                <div class="col text-right">
+                    <input type="submit" value="Add New Service" class="btn btn-primary" />
+                </div>
+            </div>
+        </form>
+    </fieldset>
+
+</div>
